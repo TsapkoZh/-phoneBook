@@ -1,0 +1,73 @@
+.addContactFormWrapper {
+  display: flex;
+  flex-direction: column;
+  width: 230px;
+  height: 100%;
+  font-family: Arial, Helvetica, sans-serif;
+  padding: 30px;
+}
+
+.addContactForm {
+  display: flex;
+  flex-direction: row;
+}
+
+.entryField {
+  border: 0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.295);
+  padding: 6px;
+  outline: none;
+  font-size: 17px;
+  background-color: opacify($color: #00000000, $amount: 0);
+  cursor: pointer;
+
+    &::placeholder {
+      color: rgba(128, 128, 128, 0.781) !important;
+      opacity: .5;
+      font-size: 15px;
+      font-style: italic;
+    }
+}
+
+.fieldHeader {
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: 600;
+  color: rgb(112, 112, 112);
+  margin: 0 5px 2px;
+}
+
+.btnWriteDown {
+  outline: none;
+  width: 150px;
+  background-color: white;
+  border: 1px solid black;
+  margin: 20px 0;
+  letter-spacing: 1px;
+  margin-bottom: 10px;
+  padding: 13px 19px;
+  font-weight: 600;
+  color: gray;
+
+    &.btnWriteDownActive {
+      transition: .3s;
+      cursor: pointer;
+    
+        &:hover {
+          border: 1px solid rgba(112, 172, 120, 0.863);
+        }
+    }
+
+    &.btnWriteDownDisable {
+      opacity: .3;
+    }
+}
+
+.error {
+  color: brown;
+  height: 20px;
+  width: 255px;
+  font-weight: 600;
+  font-size: small;
+  letter-spacing: 1px;
+  margin: 6px 5px;
+}

@@ -1,0 +1,17 @@
+.filterWrapper {
+  height: 50px;
+  display: flex;
+  align-items: center;
+}
+
+.search {
+  width: 30px;
+  margin: auto 10px;
+  opacity: .5;
+}
+
+.searchField {
+  height: 20px;
+  width: 300px;
+  outline-color: rgb(169, 199, 216);
+}
