@@ -1,0 +1,24 @@
+{
+  "files": {
+    "main.css": "/foneBook/static/css/main.9098dc0f.chunk.css",
+    "main.js": "/foneBook/static/js/main.ac7eb423.chunk.js",
+    "main.js.map": "/foneBook/static/js/main.ac7eb423.chunk.js.map",
+    "runtime-main.js": "/foneBook/static/js/runtime-main.e549f2ee.js",
+    "runtime-main.js.map": "/foneBook/static/js/runtime-main.e549f2ee.js.map",
+    "static/js/2.c6d2ae2b.chunk.js": "/foneBook/static/js/2.c6d2ae2b.chunk.js",
+    "static/js/2.c6d2ae2b.chunk.js.map": "/foneBook/static/js/2.c6d2ae2b.chunk.js.map",
+    "index.html": "/foneBook/index.html",
+    "precache-manifest.249d57b1330c00a52ee797a40396828c.js": "/foneBook/precache-manifest.249d57b1330c00a52ee797a40396828c.js",
+    "service-worker.js": "/foneBook/service-worker.js",
+    "static/css/main.9098dc0f.chunk.css.map": "/foneBook/static/css/main.9098dc0f.chunk.css.map",
+    "static/js/2.c6d2ae2b.chunk.js.LICENSE.txt": "/foneBook/static/js/2.c6d2ae2b.chunk.js.LICENSE.txt",
+    "static/media/detail.svg": "/foneBook/static/media/detail.01eb1f84.svg",
+    "static/media/search.svg": "/foneBook/static/media/search.822bc171.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.e549f2ee.js",
+    "static/js/2.c6d2ae2b.chunk.js",
+    "static/css/main.9098dc0f.chunk.css",
+    "static/js/main.ac7eb423.chunk.js"
+  ]
+}
