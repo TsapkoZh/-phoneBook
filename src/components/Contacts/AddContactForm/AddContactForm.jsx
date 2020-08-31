@@ -14,7 +14,7 @@ class AddContactForm extends Component {
     phoneValid: false,
   }
 
-  handleChange = (event) => {
+  handleChange = event => {
     let nam = event.target.name;
     let val = event.target.value;
     console.log(nam, 'nam');
@@ -115,6 +115,7 @@ class AddContactForm extends Component {
             <input 
               name='name'
               type='text'
+              maxLength='35'
               onChange={this.handleChange}
               placeholder='Owen Lars'
               className={s.entryField}
@@ -125,6 +126,7 @@ class AddContactForm extends Component {
             <input 
               name='email'
               type='email'
+              maxLength='30'
               onChange={this.handleChange}
               placeholder='OwenL@gmail.com'
               className={s.entryField}
@@ -137,6 +139,7 @@ class AddContactForm extends Component {
             <input 
               name='company'
               type='text'
+              maxLength='20'
               onChange={this.handleChange}
               placeholder='DEKO-Line'
               className={s.entryField}
@@ -147,6 +150,7 @@ class AddContactForm extends Component {
             <input 
               name='address'
               type='text'
+              maxLength='30'
               onChange={this.handleChange}
               placeholder='East Victoria Park, WA 6101'
               className={s.entryField}

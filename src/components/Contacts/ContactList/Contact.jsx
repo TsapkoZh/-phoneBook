@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { NavLink } from 'react-router-dom';
 // import PropTypes from 'prop-types';
 
 import detail from './detail.svg';
@@ -9,7 +10,7 @@ import {
   addressConst, 
   companyConst, 
   emailConst 
-} from './namesConstants.js'
+} from './namesConstants.js';
 
 import s from './contactList.module.scss';
 
@@ -38,10 +39,11 @@ class Contact extends Component {
       value: this.props[propName],
     });
 
-		window.addEventListener('keydown', this.handleKeyUp);
+    window.addEventListener('keydown', this.handleKeyUp);
+		window.addEventListener('keydown', this.handleKeyUpEscape);
   }
   
-  handleChangeFor = propertyName => event => {
+  handleChangeFor = () => event => {
     const trimName = event.currentTarget.value;
 
 		if (trimName.trim()) {
@@ -57,7 +59,8 @@ class Contact extends Component {
       isEditCompany: false,
       isEditEmail: false,
     });
-		window.removeEventListener('keydown', this.handleKeyUp);
+    window.removeEventListener('keydown', this.handleKeyUp);
+		window.removeEventListener('keydown', this.handleKeyUpEscape);
   }
   
   handleSaveFor = propertyName => () => {
@@ -68,14 +71,22 @@ class Contact extends Component {
 		this.handelCancel();
 	}
 
-	handleKeyUp = e => {
-		if (e.key === 'Escape') {
-			this.handelCancel();
-		}
+	handleKeyUp = propertyName => e => {
+    const { id } = this.props;
+    const { value } = this.state;
+
 		if (e.key === 'Enter') {
-			this.handleSave();
+      console.log('Enter')
+      this.props['saveEdit'+[propertyName]](id, value);
+      this.handelCancel();
 		}
-	}
+  }
+
+  handleKeyUpEscape = e => {
+		if (e.key === 'Escape') {
+      this.handelCancel();
+		}
+  }
   
   render() {
     const { 
@@ -84,6 +95,7 @@ class Contact extends Component {
       address, 
       company, 
       email,
+      index,
     } = this.props;
     
     const {
@@ -97,14 +109,20 @@ class Contact extends Component {
 
     return(
       <tr>
+        <td className={`${s.serialNumber}`}>
+          <p>{index+1}</p>
+        </td>
+
         {isEditName ? (   
           <td className={`${s.tableCell} ${s.name}`}>
             <input 
               name={nameConst}
               type='text'
+              maxLength='30'
               value={value} 
-              onChange={this.handleChangeFor(nameConst)}
+              onChange={this.handleChangeFor()}
               onBlur={this.handleSaveFor(nameConst)}
+              onKeyPress={this.handleKeyUp(nameConst)}
               autoFocus={true}
               className={s.editContact}
             />
@@ -125,9 +143,11 @@ class Contact extends Component {
             <input 
               name={phoneConst}
               type='tel'
+              maxLength='20'
               value={value} 
-              onChange={this.handleChangeFor(phoneConst)}
+              onChange={this.handleChangeFor()}
               onBlur={this.handleSaveFor(phoneConst)}
+              onKeyPress={this.handleKeyUp(phoneConst)}
               autoFocus={true}
               className={s.editContact}
             />
@@ -148,8 +168,10 @@ class Contact extends Component {
               name={addressConst}
               type='text'
               value={value} 
-              onChange={this.handleChangeFor(addressConst)}
+              maxLength='30'
+              onChange={this.handleChangeFor()}
               onBlur={this.handleSaveFor(addressConst)}
+              onKeyPress={this.handleKeyUp(addressConst)}
               autoFocus={true}
               className={s.editContact}
             />
@@ -169,9 +191,11 @@ class Contact extends Component {
             <input 
               name={companyConst}
               type='text'
+              maxLength='25'
               value={value} 
-              onChange={this.handleChangeFor(companyConst)}
+              onChange={this.handleChangeFor()}
               onBlur={this.handleSaveFor(companyConst)}
+              onKeyPress={this.handleKeyUp(companyConst)}
               autoFocus={true}
               className={s.editContact}
             />
@@ -191,9 +215,11 @@ class Contact extends Component {
             <input 
               name={emailConst}
               type='text'
+              maxLength='30'
               value={value} 
-              onChange={this.handleChangeFor(emailConst)}
+              onChange={this.handleChangeFor()}
               onBlur={this.handleSaveFor(emailConst)}
+              onKeyPress={this.handleKeyUp(emailConst)}
               autoFocus={true}
               className={s.editContact}
             />
@@ -219,11 +245,10 @@ class Contact extends Component {
         </td>
 
         <td className={`${s.tableCell}`}>
-          <button className={s.del}>  
-            <img src={detail} className={s.del} alt="detail" />
-          </button>
+          <NavLink to={`/items/${index+1}`}>  
+            <img src={detail} alt="detail" />
+          </NavLink>
         </td>
-
       </tr>
     )
   }

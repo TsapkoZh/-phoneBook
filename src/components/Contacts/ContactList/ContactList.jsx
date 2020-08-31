@@ -13,19 +13,25 @@ class ContactList extends Component {
       saveEditPhone, 
       saveEditAddress, 
       saveEditCompany, 
-      saveEditEmail, 
+      saveEditEmail,
     } = this.props;
 
     return (
         <table className={s.table}>
           <colgroup>
-            <col className={s.col1} />
-            <col className={s.col2} />
-            <col className={s.col3} span='3' />
-            <col className={s.col4} span='2' />
+            <col className={s.colSerNum} />
+            <col className={s.colName} />
+            <col className={s.colPhone} />
+            <col className={s.colAddress} />
+            <col className={s.colCompany} />
+            <col className={s.colEmail} />
+            <col className={s.colDelProp} span='2'/>
           </colgroup>
           <tbody>
             <tr>
+              <td className={s.tableCellHeader}>
+                {/* is empty */}
+              </td>
               <td className={s.tableCellHeader}>
                 NAME
               </td>
@@ -54,7 +60,7 @@ class ContactList extends Component {
               </td>
             </tr>
 
-            {contacts.map(({id, name, phone, address, company, email}) => (
+            {contacts.map(({id, name, phone, address, company, email}, index) => (
               <Contact 
                 key={id}
                 id={id}
@@ -63,6 +69,7 @@ class ContactList extends Component {
                 address={address}
                 company={company}
                 email={email}
+                index={index}
                 delContact={delContact}
                 saveEditName={saveEditName}
                 saveEditPhone={saveEditPhone}

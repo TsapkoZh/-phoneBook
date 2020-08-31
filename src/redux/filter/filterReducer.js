@@ -1,6 +1,6 @@
 import { FILTER_CONTACT } from "./types";
 
-const initialState = 'a';
+const initialState = '';
 
 export default (state = initialState, action) => {
   switch (action.type) {
@@ -8,5 +8,5 @@ export default (state = initialState, action) => {
       return action.payload;
     
     default: return state;
-  }
-} 
+  };
+};

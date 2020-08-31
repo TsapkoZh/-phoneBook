@@ -1,13 +1,9 @@
 import React, { Component } from 'react';
 // import PropTypes from 'prop-types';
 
-// import AddContactForm from './AddContactForm/AddContactForm'
-// import Filter from './Filter/Filter'
-// import ContactList from './ContactList/ContactList'
-import AddContactForm from './AddContactForm'
-import Filter from './Filter'
-import ContactList from './ContactList'
-import ContactProperties from '../ContactProperties/ContactProperties'
+import AddContactForm from './AddContactForm';
+import Filter from './Filter';
+import ContactList from './ContactList';
 
 import s from './contacts.module.scss';
 
@@ -51,8 +47,6 @@ class Contacts extends Component {
         <AddContactForm
           addContact={addContact}
         />
-
-        <ContactProperties />
       </div>
     )
   }

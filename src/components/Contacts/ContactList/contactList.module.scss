@@ -38,6 +38,13 @@
   font-size: 12px;
 }
 
+.serialNumber {
+  background-color: rgba(98, 138, 161, 0.712);
+  color: rgb(255, 255, 255);
+  font-weight: 700;
+  border-bottom: 1px solid white;
+}
+
 .del {
   outline: none;
   background-color: white;
@@ -55,18 +62,30 @@
   }
 }
 
-.col1 {
-  width: 15%;
+.colSerNum {
+  width: 2%;
 }
 
-.col2 {
-  width: 10%;
+.colName {
+  width: 12%;
 }
 
-.col3 {
-  width: 15%;
+.colPhone {
+  width: 8%;
 }
 
-.col4 {
+.colAddress {
+  width: 11%;
+}
+
+.colCompany {
+  width: 9%;
+}
+
+.colEmail {
+  width: 14%;
+}
+
+.colDelProp {
   width: 30px;
 }
