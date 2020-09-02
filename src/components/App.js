@@ -1,17 +1,18 @@
 import React from 'react';
 
-import PhoneBook from './PhoneBook'
+import PhoneBook from './PhoneBook';
 import ContactProperties from './ContactProperties';
-import { Route, BrowserRouter } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
+
 
 function App() {
   return (
-    <BrowserRouter>
-      <div className='App'>
-        <Route exact path='/' component={PhoneBook} />
-        <Route exact path="/items/:itemId" component={ContactProperties} />
-      </div>
-    </BrowserRouter>
+    <div className='App'>
+      <Switch>
+          <Route exact path='/phoneBook' component={PhoneBook} />
+          <Route exact path="/items/:itemId" component={ContactProperties} />
+      </Switch>
+    </div>
   );
 };
 

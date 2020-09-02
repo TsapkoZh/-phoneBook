@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { NavLink } from 'react-router-dom';
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 
 import detail from './detail.svg';
 
@@ -254,10 +254,12 @@ class Contact extends Component {
   }
 }
 
-// Goods.propTypes = {
-//   nameProduct: PropTypes.string,
-//   quantity: PropTypes.string,
-//   price: PropTypes.string,
-// }
+Contact.propTypes = {
+  name: PropTypes.string, 
+  phone: PropTypes.string, 
+  address: PropTypes.string, 
+  company: PropTypes.string, 
+  email: PropTypes.string,
+}
 
 export default Contact;

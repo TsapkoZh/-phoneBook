@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-// import PropTypes from 'prop-types';
+
+import qs from 'query-string';
+
+import PropTypes from 'prop-types';
 
 import { 
   addContact, 
@@ -12,7 +15,6 @@ import {
   saveEditCompany,
   saveEditEmail,
 } from '../redux/contact/actions.js';
-import { filterContact } from '../redux/filter/actions.js';
 
 import Contacts from './Contacts';
 
@@ -21,7 +23,6 @@ class PhoneBook extends Component {
     const { 
       addContact, 
       contacts, 
-      filterContact, 
       delContact, 
       saveEditName, 
       saveEditPhone,
@@ -36,7 +37,6 @@ class PhoneBook extends Component {
           addContact={addContact}
           delContact={delContact}
           contacts={contacts}
-          filterContact={filterContact}
           saveEditName={saveEditName}
           saveEditPhone={saveEditPhone}
           saveEditAddress={saveEditAddress}
@@ -45,28 +45,39 @@ class PhoneBook extends Component {
         />
       </div>
     )
-  }
-}
+  };
+};
 
 const filterContacts = (arr, searchKey) => {
-  return arr.filter(obj => Object.keys(obj).some(key => obj[key].toLowerCase().includes(searchKey)));
-}
+  const { search } = qs.parse(searchKey);
+  
+  return arr.filter(obj => Object.keys(obj).some(key => obj[key].toLowerCase().includes(search)));
+};
 
 const mapStateToProps = state => ({
-  contacts: filterContacts(state.contacts, state.filter),
-  filter: state.filter,
+  contacts: filterContacts(state.contacts, state.router.location.search),
 });
 
 const mapDispatchToProps = dispatch =>
   bindActionCreators({
     addContact,
     delContact,
-    filterContact,
     saveEditName,
     saveEditPhone,
     saveEditAddress,
     saveEditCompany,
     saveEditEmail,
   }, dispatch);
+
+  PhoneBook.propTypes = {
+    contacts: PropTypes.arrayOf(PropTypes.shape({
+      id: PropTypes.string,
+      name: PropTypes.string,
+      phone: PropTypes.string,
+      address: PropTypes.string,
+      company: PropTypes.string,
+      email: PropTypes.string,
+    })),
+  };
 
 export default connect(mapStateToProps, mapDispatchToProps)(PhoneBook);

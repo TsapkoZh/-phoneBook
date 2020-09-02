@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 
 import AddContactForm from './AddContactForm';
 import Filter from './Filter';
@@ -50,6 +50,24 @@ class Contacts extends Component {
       </div>
     )
   }
+}
+
+Contacts.propTypes = {
+  contacts: PropTypes.arrayOf(PropTypes.shape({
+    id: PropTypes.string,
+    name: PropTypes.string,
+    phone: PropTypes.string,
+    address: PropTypes.string,
+    company: PropTypes.string,
+    email: PropTypes.string,
+  })), 
+  addContact: PropTypes.func,
+  delContact: PropTypes.func,
+  saveEditName: PropTypes.func,
+  saveEditPhone: PropTypes.func,
+  saveEditAddress: PropTypes.func,
+  saveEditCompany: PropTypes.func,
+  saveEditEmail: PropTypes.func,
 }
 
 export default Contacts;

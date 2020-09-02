@@ -48,7 +48,7 @@
   font-weight: 600;
   color: gray;
 
-    &.btnWriteDownActive {
+    &Active {
       transition: .3s;
       cursor: pointer;
     
@@ -57,7 +57,7 @@
         }
     }
 
-    &.btnWriteDownDisable {
+    &Disable {
       opacity: .3;
     }
 }

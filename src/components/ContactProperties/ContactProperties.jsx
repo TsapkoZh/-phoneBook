@@ -1,5 +1,5 @@
 import React from 'react';
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 
 import s from './contactProperties.module.scss';
 import { connect } from 'react-redux';
@@ -34,5 +34,13 @@ const mapStateToProps = (state, ownProps) => {
     contact: contact,
   };
 };
+
+ContactProperties.propTypes = {
+  name: PropTypes.string, 
+  phone: PropTypes.string, 
+  address: PropTypes.string, 
+  company: PropTypes.string, 
+  email: PropTypes.string,
+}
 
 export default connect (mapStateToProps)(ContactProperties);

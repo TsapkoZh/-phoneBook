@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 
 import s from './addContactForm.module.scss';
 
@@ -15,50 +15,43 @@ class AddContactForm extends Component {
   }
 
   handleChange = event => {
-    let nam = event.target.name;
-    let val = event.target.value;
-    console.log(nam, 'nam');
-    console.log(val, 'val');
+    const nam = event.target.name;
+    const val = event.target.value;
+
     this.setState({[nam]: val},
                   () => { this.validateField(nam, val) })
   }
 
   validateField = (fieldName, value)  => {
-    let fieldValidationErrors = this.state.formErrors;
-    let nameValid = this.state.nameValid;
-    let phoneValid = this.state.phoneValid;
+    const { formErrors } = this.state;
 
     switch (fieldName) {
-      case 'name':
-        nameValid = value.length >= 2;
-        fieldValidationErrors.name = nameValid ? '' : 'Введите имя*';
-        break;
+      case 'name':{
+        const isValid = value.length >= 2;
+        this.setState({ 
+          formErrors: {
+            ...formErrors,
+            name: isValid ? '' : 'Введите имя*',
+          },
+          nameValid: isValid,
+        });
+        break;}
 
-      case 'phone':
-        phoneValid = value.length >= 2;
-        fieldValidationErrors.phone = phoneValid ? '' : 'Введите номер телефона*';
+      case 'phone': {
+        const isValid = value.length >= 3;
+        this.setState({ 
+          formErrors: {
+            ...formErrors,
+            phone: isValid ? '' : 'Введите номер телефона*',
+          },
+          phoneValid: isValid,
+        });
         break;
+      }
 
       default:
         break;
     }
-
-    console.log(fieldName, 'fieldName');
-    console.log(value, 'value');
-
-    this.setState({formErrors: fieldValidationErrors,
-      nameValid: nameValid,
-      phoneValid: phoneValid,
-    }, this.validateForm);
-  }
-
-  validateForm() {
-    const {
-      nameValid,
-      phoneValid,
-    } = this.state;
-
-    this.setState({formValid: nameValid && phoneValid});
   }
 
   handleSubmit = event => {
@@ -79,8 +72,6 @@ class AddContactForm extends Component {
       email,
     };
 
-    console.log(newContact)
-
     event.preventDefault();
     this.props.addContact(newContact);
   }
@@ -88,8 +79,11 @@ class AddContactForm extends Component {
   render() {
     const {
       formErrors,
-      formValid,
+      nameValid,
+      phoneValid,
     } = this.state;
+
+    const formValid = nameValid && phoneValid;
 
     return (
       <form
@@ -169,6 +163,14 @@ class AddContactForm extends Component {
       </form>
     )
   }
+}
+
+AddContactForm.propTypes = {
+  name: PropTypes.string, 
+  phone: PropTypes.string, 
+  address: PropTypes.string, 
+  company: PropTypes.string, 
+  email: PropTypes.string,
 }
 
 export default AddContactForm;

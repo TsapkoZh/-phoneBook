@@ -1,11 +1,11 @@
 import { combineReducers } from "redux";
+import { connectRouter } from 'connected-react-router'
 
 import contactReducer from "./contact/contactReducer.js";
-import filterReducer from "./filter/filterReducer.js";
-// import { routerReducer } from "react-router-redux";
 
-export default combineReducers({
-	// routing: routerReducer,
+const createRootReducer = (history) => combineReducers({
+	router: connectRouter(history),
 	contacts: contactReducer,
-	filter: filterReducer,
 })
+
+export default createRootReducer;

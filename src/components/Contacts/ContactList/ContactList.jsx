@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 
 import s from './contactList.module.scss';
 import Contact from './Contact';
@@ -82,6 +82,20 @@ class ContactList extends Component {
         </table>
     )
   }
+}
+
+Contact.propTypes = {
+  name: PropTypes.string, 
+  phone: PropTypes.string, 
+  address: PropTypes.string, 
+  company: PropTypes.string, 
+  email: PropTypes.string,
+  delContact: PropTypes.func,
+  saveEditName: PropTypes.func,
+  saveEditPhone: PropTypes.func,
+  saveEditAddress: PropTypes.func,
+  saveEditCompany: PropTypes.func,
+  saveEditEmail: PropTypes.func,
 }
 
 export default ContactList;
