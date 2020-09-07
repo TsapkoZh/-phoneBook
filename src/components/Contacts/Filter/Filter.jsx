@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import { withRouter } from 'react-router-dom';
 import qs from 'query-string';
 import PropTypes from 'prop-types';
@@ -7,7 +7,7 @@ import searchIcon from './search.svg';
 
 import s from './filter.module.scss';
 
-class Filter extends Component {
+class Filter extends PureComponent {
   handleKeyPress = e => {
     const query = { search: e.currentTarget.value.toLowerCase() };
     const searchString = qs.stringify(query);
@@ -18,7 +18,7 @@ class Filter extends Component {
   };
 
   render() {
-    const {search} = qs.parse(this.props.location.search);
+    const { search } = qs.parse(this.props.location.search);
 
     return (
       <div className={s.filterWrapper}>

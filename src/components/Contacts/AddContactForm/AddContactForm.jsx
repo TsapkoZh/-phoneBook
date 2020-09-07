@@ -1,176 +1,91 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
+import React from 'react';
+import { Formik, Form } from 'formik';
+import * as Yup from 'yup';
+
+import TextInput from './TextInput/TextInput'
 
 import s from './addContactForm.module.scss';
 
-class AddContactForm extends Component {
+const fields = [
+  {
+    label: 'Name',
+    name: 'name',
+    type: 'text',
+    placeholder: 'Tsapko Evgenii',
+  },
+  {
+    label: 'Phone',
+    name: 'phone',
+    type: 'tel',
+    placeholder: '+7(965)723-41-49',
+  },
+  {
+    label: 'Address',
+    name: 'address',
+    type: 'text',
+    placeholder: 'Ylitsa Stroiteleii, 16/24',
+  },
+  {
+    label: 'Company',
+    name: 'company',
+    type: 'text',
+    placeholder: 'Deko-line',
+  },
+  {
+    label: 'Email',
+    name: 'email',
+    type: 'email',
+    placeholder: 'TsapkoZh@gmail.com',
+  },
+]
 
-  state = {
-    formErrors: {
-      name: '', 
-      phone: '',
-    },
-    nameValid: false, 
-    phoneValid: false,
-  }
+const AddContactForm = props => {
+  return (
+    <div className={s.addContactFormWrapper}>
+      <h1 className={s.title}>add contact</h1>
 
-  handleChange = event => {
-    const nam = event.target.name;
-    const val = event.target.value;
+      <Formik
+        initialValues={{
+          name: '',
+          phone: '',
+          address: '',
+          company: '',
+          email: '',
+        }}
 
-    this.setState({[nam]: val},
-                  () => { this.validateField(nam, val) })
-  }
+        validationSchema={Yup.object({
+          name: Yup.string()
+            .max(30, 'Must be 30 characters or less')
+            .required('Required'),
+          phone: Yup.string()
+            .max(20, 'Must be 20 characters or less')
+            .required('Required'),
+          email: Yup.string()
+            .email('Invalid email address')
+            .required('Required'),
+        })}
 
-  validateField = (fieldName, value)  => {
-    const { formErrors } = this.state;
-
-    switch (fieldName) {
-      case 'name':{
-        const isValid = value.length >= 2;
-        this.setState({ 
-          formErrors: {
-            ...formErrors,
-            name: isValid ? '' : 'Введите имя*',
-          },
-          nameValid: isValid,
-        });
-        break;}
-
-      case 'phone': {
-        const isValid = value.length >= 3;
-        this.setState({ 
-          formErrors: {
-            ...formErrors,
-            phone: isValid ? '' : 'Введите номер телефона*',
-          },
-          phoneValid: isValid,
-        });
-        break;
-      }
-
-      default:
-        break;
-    }
-  }
-
-  handleSubmit = event => {
-    const {
-      name,
-      phone,
-      address,
-      company,
-      email,
-    } = this.state;
-
-    const newContact = {
-      id: Date.now().toString(), 
-      name,
-      phone,
-      address,
-      company,
-      email,
-    };
-
-    event.preventDefault();
-    this.props.addContact(newContact);
-  }
-  
-  render() {
-    const {
-      formErrors,
-      nameValid,
-      phoneValid,
-    } = this.state;
-
-    const formValid = nameValid && phoneValid;
-
-    return (
-      <form
-        onSubmit={this.handleSubmit}
-        className={s.addContactFormWrapper}
+        onSubmit={(values, { setSubmitting, resetForm }) => {
+          setSubmitting(true)
+          // resetForm()
+          props.addContact({ id: Date.now().toString(), ...values });
+        }}
       >
-        <label 
-          className={s.addContactForm}
-        >
-          <div>
-            <p className={s.fieldHeader}>Phone</p>
-            <input 
-              name='phone'
-              type='tel'
-              maxLength='20'
-              onChange={this.handleChange}
-              placeholder='8-800-555-35-35'
-              className={s.entryField}
-            />
-            <p className={s.error}>{formErrors.phone}</p>
+        <Form className={s.formWrapper}>
+          {
+            fields.map(element => (
+              <TextInput 
+                {...element}
+                key={element.name}
+              />
+            ))
+          }
 
-            <p className={s.fieldHeader}>Name</p>
-            <input 
-              name='name'
-              type='text'
-              maxLength='35'
-              onChange={this.handleChange}
-              placeholder='Owen Lars'
-              className={s.entryField}
-            />
-            <p className={s.error}>{formErrors.name}</p>
-
-            <p className={s.fieldHeader}>Email</p>
-            <input 
-              name='email'
-              type='email'
-              maxLength='30'
-              onChange={this.handleChange}
-              placeholder='OwenL@gmail.com'
-              className={s.entryField}
-            />
-            <p className={s.error}></p>
-          </div>
-
-          <div>
-            <p className={s.fieldHeader}>Company</p>
-            <input 
-              name='company'
-              type='text'
-              maxLength='20'
-              onChange={this.handleChange}
-              placeholder='DEKO-Line'
-              className={s.entryField}
-            />
-            <p className={s.error}></p>
-
-            <p className={s.fieldHeader}>Address</p>
-            <input 
-              name='address'
-              type='text'
-              maxLength='30'
-              onChange={this.handleChange}
-              placeholder='East Victoria Park, WA 6101'
-              className={s.entryField}
-            />
-            <p className={s.error}></p>
-          </div>
-        </label>
-
-        <button
-          onClick={this.handleSubmit}
-          disabled={!formValid}
-          className={!formValid ? `${s.btnWriteDown} ${s.btnWriteDownDisable}` : `${s.btnWriteDown} ${s.btnWriteDownActive}`}
-        >
-          add contact
-        </button>
-      </form>
-    )
-  }
-}
-
-AddContactForm.propTypes = {
-  name: PropTypes.string, 
-  phone: PropTypes.string, 
-  address: PropTypes.string, 
-  company: PropTypes.string, 
-  email: PropTypes.string,
-}
+          <button className={s.btnWriteDown} type="submit">ADD CONTACT</button>
+        </Form>
+      </Formik>
+    </div>
+  );
+};
 
 export default AddContactForm;

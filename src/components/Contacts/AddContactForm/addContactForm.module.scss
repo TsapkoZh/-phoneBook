@@ -1,7 +1,7 @@
 .addContactFormWrapper {
   display: flex;
   flex-direction: column;
-  width: 230px;
+  width: 260px;
   height: 100%;
   font-family: Arial, Helvetica, sans-serif;
   padding: 30px;
@@ -9,7 +9,19 @@
 
 .addContactForm {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
+}
+
+.formWrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.title {
+  margin: 0 auto;
+  margin-bottom: 20px;
+  font-weight: 900;
+  opacity: .08;
 }
 
 .entryField {
@@ -20,6 +32,10 @@
   font-size: 17px;
   background-color: opacify($color: #00000000, $amount: 0);
   cursor: pointer;
+
+    &.hasError {
+      border-bottom: 2px solid rgb(151, 0, 0);
+    }
 
     &::placeholder {
       color: rgba(128, 128, 128, 0.781) !important;
@@ -41,29 +57,22 @@
   width: 150px;
   background-color: white;
   border: 1px solid black;
-  margin: 20px 0;
+  margin: 20px auto;
   letter-spacing: 1px;
   margin-bottom: 10px;
   padding: 13px 19px;
   font-weight: 600;
   color: gray;
-
-    &Active {
-      transition: .3s;
-      cursor: pointer;
+  transition: .3s;
+  cursor: pointer;
     
-        &:hover {
-          border: 1px solid rgba(112, 172, 120, 0.863);
-        }
-    }
-
-    &Disable {
-      opacity: .3;
+    &:hover {
+      border: 1px solid rgba(112, 150, 172, 0.863);
     }
 }
 
-.error {
-  color: brown;
+.formMessage {
+  color: rgba(165, 42, 42, 0.637);
   height: 20px;
   width: 255px;
   font-weight: 600;
@@ -71,3 +80,4 @@
   letter-spacing: 1px;
   margin: 6px 5px;
 }
+

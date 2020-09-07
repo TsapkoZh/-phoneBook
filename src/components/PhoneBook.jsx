@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
@@ -18,7 +18,7 @@ import {
 
 import Contacts from './Contacts';
 
-class PhoneBook extends Component {
+class PhoneBook extends PureComponent {
   render() {
     const { 
       addContact, 
@@ -50,12 +50,17 @@ class PhoneBook extends Component {
 
 const filterContacts = (arr, searchKey) => {
   const { search } = qs.parse(searchKey);
-  
-  return arr.filter(obj => Object.keys(obj).some(key => obj[key].toLowerCase().includes(search)));
+
+  if(!search) {
+    return arr
+  }
+    return arr.filter(obj => Object.keys(obj).some(key => obj[key].toLowerCase().includes(search)));
 };
 
 const mapStateToProps = state => ({
   contacts: filterContacts(state.contacts, state.router.location.search),
+
+  // contacts: state.contacts
 });
 
 const mapDispatchToProps = dispatch =>

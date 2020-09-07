@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 
 import AddContactForm from './AddContactForm';
@@ -7,12 +7,11 @@ import ContactList from './ContactList';
 
 import s from './contacts.module.scss';
 
-class Contacts extends Component {
+class Contacts extends PureComponent {
   render() {
     const { 
       addContact, 
       contacts, 
-      filterContact, 
       delContact, 
       saveEditName, 
       saveEditPhone,
@@ -27,10 +26,7 @@ class Contacts extends Component {
           <h1 className={s.title}>phone book</h1>
 
           <div className={s.wrapper}>
-            <Filter
-              contacts={contacts}
-              filterContact={filterContact}
-            />
+            <Filter/>
             
             <ContactList
               delContact={delContact}

@@ -1,10 +1,21 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 
 import s from './contactList.module.scss';
 import Contact from './Contact';
 
-class ContactList extends Component {
+const tableHeads = [
+  { title: '', id: '1' },
+  { title: 'NAME', id: '2'},
+  { title: 'PHONE', id: '3'},
+  { title: 'ADDRESS', id: '4'},
+  { title: 'COMPANY', id: '5'},
+  { title: 'EMAIL', id: '6'},
+  { title: '', id: '7'},
+  { title: '', id: '8'},
+]
+
+class ContactList extends PureComponent {
   render() {
     const { 
       contacts, 
@@ -15,6 +26,7 @@ class ContactList extends Component {
       saveEditCompany, 
       saveEditEmail,
     } = this.props;
+  
 
     return (
         <table className={s.table}>
@@ -29,35 +41,16 @@ class ContactList extends Component {
           </colgroup>
           <tbody>
             <tr>
-              <td className={s.tableCellHeader}>
-                {/* is empty */}
-              </td>
-              <td className={s.tableCellHeader}>
-                NAME
-              </td>
-
-              <td className={s.tableCellHeader}>
-                PHONE
-              </td>
-
-              <td className={s.tableCellHeader}>
-                ADDRESS
-              </td>
-
-              <td className={s.tableCellHeader}>
-                COMPANY
-              </td>
-
-              <td className={s.tableCellHeader}>
-                EMAIL
-              </td>
-              <td className={s.tableCellHeader}>
-                {/* is empty */}
-              </td>  
-
-              <td className={s.tableCellHeader}>
-                {/* is empty */}
-              </td>
+              {
+                tableHeads.map(el => (
+                  <td 
+                    key={el.id}
+                    className={s.tableCellHeader}
+                  >
+                    { el.title }
+                  </td>
+                ))
+              }
             </tr>
 
             {contacts.map(({id, name, phone, address, company, email}, index) => (
