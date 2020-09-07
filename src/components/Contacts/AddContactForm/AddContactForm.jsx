@@ -6,6 +6,7 @@ import TextInput from './TextInput'
 
 import s from './addContactForm.module.scss';
 
+
 const fields = [
   {
     label: 'Name',
@@ -66,8 +67,8 @@ const AddContactForm = props => {
         })}
 
         onSubmit={(values, { setSubmitting, resetForm }) => {
-          setSubmitting(true)
-          // resetForm()
+          setSubmitting(true);
+          resetForm();
           props.addContact({ id: Date.now().toString(), ...values });
         }}
       >

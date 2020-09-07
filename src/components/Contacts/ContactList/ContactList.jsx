@@ -19,52 +19,51 @@ class ContactList extends PureComponent {
   render() {
     const { 
       contacts, 
-      delContact,
+      deleteContact ,
       saveEditFields,
     } = this.props;
   
-
     return (
-        <table className={s.table}>
-          <colgroup>
-            <col className={s.colSerNum} />
-            <col className={s.colName} />
-            <col className={s.colPhone} />
-            <col className={s.colAddress} />
-            <col className={s.colCompany} />
-            <col className={s.colEmail} />
-            <col className={s.colDelProp} span='2'/>
-          </colgroup>
-          <tbody>
-            <tr>
-              {
-                tableHeads.map(el => (
-                  <td 
-                    key={el.id}
-                    className={s.tableCellHeader}
-                  >
-                    { el.title }
-                  </td>
-                ))
-              }
-            </tr>
-
-            {contacts.map(({id, name, phone, address, company, email}, index) => (
-              <Contact 
-                key={id}
-                id={id}
-                name={name}
-                phone={phone}
-                address={address}
-                company={company}
-                email={email}
-                index={index}
-                delContact={delContact}
-                saveEditFields={saveEditFields}
-              />))
+      <table className={s.table}>
+        <colgroup>
+          <col className={s.colSerNum} />
+          <col className={s.colName} />
+          <col className={s.colPhone} />
+          <col className={s.colAddress} />
+          <col className={s.colCompany} />
+          <col className={s.colEmail} />
+          <col className={s.colDelProp} span='2'/>
+        </colgroup>
+        <tbody>
+          <tr>
+            {
+              tableHeads.map(el => (
+                <td 
+                  key={el.id}
+                  className={s.tableCellHeader}
+                >
+                  { el.title }
+                </td>
+              ))
             }
-          </tbody>
-        </table>
+          </tr>
+
+          {contacts.map(({id, name, phone, address, company, email}, index) => (
+            <Contact 
+              key={id}
+              id={id}
+              name={name}
+              phone={phone}
+              address={address}
+              company={company}
+              email={email}
+              index={index}
+              deleteContact ={deleteContact }
+              saveEditFields={saveEditFields}
+            />))
+          }
+        </tbody>
+      </table>
     )
   }
 }
@@ -75,7 +74,7 @@ Contact.propTypes = {
   address: PropTypes.string, 
   company: PropTypes.string, 
   email: PropTypes.string,
-  delContact: PropTypes.func,
+  deleteContact : PropTypes.func,
   saveEditFields: PropTypes.func,
 }
 

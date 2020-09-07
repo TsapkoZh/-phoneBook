@@ -1,11 +1,19 @@
 import React from 'react';
 import { useField } from 'formik';
 import PropTypes from 'prop-types';
+import classNames from 'classnames/bind';
 
 import s from '../addContactForm.module.scss';
 
+let cx = classNames.bind(s);
+
 const TextInput  = ({ label, ...props }) => {
   const [field, meta] = useField(props);
+
+  let entryField = cx({
+    entryField: true,
+    hasError: meta.touched && meta.error,
+  });
 
   return (
     <div className={s.addContactForm}>
@@ -19,9 +27,7 @@ const TextInput  = ({ label, ...props }) => {
       <input 
         {...field} 
         {...props} 
-        className={meta.touched && meta.error ? 
-          `${s.entryField} ${s.hasError}` 
-          : s.entryField}
+        className={entryField}
       />
 
       <div 

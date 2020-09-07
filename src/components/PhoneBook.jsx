@@ -8,7 +8,7 @@ import PropTypes from 'prop-types';
 
 import { 
   addContact, 
-  delContact,
+  deleteContact ,
   saveEditFields, 
 } from '../redux/contact/actions.js';
 
@@ -20,18 +20,16 @@ class PhoneBook extends PureComponent {
       contacts,
       addContact, 
       saveEditFields, 
-      delContact, 
+      deleteContact , 
     } = this.props;
 
     return (
-      <div>
-        <Contacts
-          contacts={contacts}
-          addContact={addContact}
-          delContact={delContact}
-          saveEditFields={saveEditFields}
-        />
-      </div>
+      <Contacts
+        contacts={contacts}
+        addContact={addContact}
+        deleteContact ={deleteContact }
+        saveEditFields={saveEditFields}
+      />
     )
   };
 };
@@ -52,7 +50,7 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch =>
   bindActionCreators({
     addContact,
-    delContact,
+    deleteContact ,
     saveEditFields,
   }, dispatch);
 
@@ -66,7 +64,7 @@ const mapDispatchToProps = dispatch =>
       email: PropTypes.string,
     })),
     addContact: PropTypes.func,
-    delContact: PropTypes.func,
+    deleteContact : PropTypes.func,
     saveEditFields: PropTypes.func,
   };
 

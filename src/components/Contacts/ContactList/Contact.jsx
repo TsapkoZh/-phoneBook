@@ -38,9 +38,9 @@ const fields = [
 
 class Contact extends PureComponent {
   handleDelete = () => {
-    const { id, delContact } = this.props;
+    const { id, deleteContact  } = this.props;
 
-		delContact(id);
+		deleteContact (id);
   }
 
   handleSaveEdit = (name, value) => {
@@ -52,6 +52,7 @@ class Contact extends PureComponent {
   render() {
     const { 
       index,
+      id,
     } = this.props;
     
     return(
@@ -81,7 +82,7 @@ class Contact extends PureComponent {
         </td>
 
         <td className={`${s.tableCell}`}>
-          <NavLink to={`/items/${index+1}`}>  
+          <NavLink to={`/items/${id}`}>  
             <img src={detail} alt="detail" />
           </NavLink>
         </td>

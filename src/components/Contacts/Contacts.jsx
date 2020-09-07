@@ -12,7 +12,7 @@ class Contacts extends PureComponent {
     const { 
       contacts,
       addContact, 
-      delContact, 
+      deleteContact , 
       saveEditFields, 
     } = this.props;
 
@@ -26,7 +26,7 @@ class Contacts extends PureComponent {
             
             <ContactList
               contacts={contacts}
-              delContact={delContact}
+              deleteContact ={deleteContact }
               saveEditFields={saveEditFields}
             />
           </div>
@@ -50,7 +50,7 @@ Contacts.propTypes = {
     email: PropTypes.string,
   })), 
   addContact: PropTypes.func,
-  delContact: PropTypes.func,
+  deleteContact : PropTypes.func,
   saveEditFields: PropTypes.func,
 }
 

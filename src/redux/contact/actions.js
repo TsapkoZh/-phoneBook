@@ -9,7 +9,7 @@ export const addContact = contact => ({
   payload: contact,
 });
 
-export const delContact = id => ({
+export const deleteContact  = id => ({
   type: DELETE_CONTACT,
   payload: id,
 });
