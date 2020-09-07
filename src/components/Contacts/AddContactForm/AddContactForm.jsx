@@ -2,7 +2,7 @@ import React from 'react';
 import { Formik, Form } from 'formik';
 import * as Yup from 'yup';
 
-import TextInput from './TextInput/TextInput'
+import TextInput from './TextInput'
 
 import s from './addContactForm.module.scss';
 

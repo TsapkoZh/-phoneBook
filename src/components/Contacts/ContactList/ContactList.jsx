@@ -19,12 +19,8 @@ class ContactList extends PureComponent {
   render() {
     const { 
       contacts, 
-      delContact, 
-      saveEditName, 
-      saveEditPhone, 
-      saveEditAddress, 
-      saveEditCompany, 
-      saveEditEmail,
+      delContact,
+      saveEditFields,
     } = this.props;
   
 
@@ -64,11 +60,7 @@ class ContactList extends PureComponent {
                 email={email}
                 index={index}
                 delContact={delContact}
-                saveEditName={saveEditName}
-                saveEditPhone={saveEditPhone}
-                saveEditAddress={saveEditAddress}
-                saveEditCompany={saveEditCompany}
-                saveEditEmail={saveEditEmail}
+                saveEditFields={saveEditFields}
               />))
             }
           </tbody>
@@ -84,11 +76,7 @@ Contact.propTypes = {
   company: PropTypes.string, 
   email: PropTypes.string,
   delContact: PropTypes.func,
-  saveEditName: PropTypes.func,
-  saveEditPhone: PropTypes.func,
-  saveEditAddress: PropTypes.func,
-  saveEditCompany: PropTypes.func,
-  saveEditEmail: PropTypes.func,
+  saveEditFields: PropTypes.func,
 }
 
 export default ContactList;

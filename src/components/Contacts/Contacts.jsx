@@ -10,14 +10,10 @@ import s from './contacts.module.scss';
 class Contacts extends PureComponent {
   render() {
     const { 
+      contacts,
       addContact, 
-      contacts, 
       delContact, 
-      saveEditName, 
-      saveEditPhone,
-      saveEditAddress,
-      saveEditCompany,
-      saveEditEmail,
+      saveEditFields, 
     } = this.props;
 
     return (
@@ -29,13 +25,9 @@ class Contacts extends PureComponent {
             <Filter/>
             
             <ContactList
-              delContact={delContact}
               contacts={contacts}
-              saveEditName={saveEditName}
-              saveEditPhone={saveEditPhone}
-              saveEditAddress={saveEditAddress}
-              saveEditCompany={saveEditCompany}
-              saveEditEmail={saveEditEmail}
+              delContact={delContact}
+              saveEditFields={saveEditFields}
             />
           </div>
         </div>
@@ -59,11 +51,7 @@ Contacts.propTypes = {
   })), 
   addContact: PropTypes.func,
   delContact: PropTypes.func,
-  saveEditName: PropTypes.func,
-  saveEditPhone: PropTypes.func,
-  saveEditAddress: PropTypes.func,
-  saveEditCompany: PropTypes.func,
-  saveEditEmail: PropTypes.func,
+  saveEditFields: PropTypes.func,
 }
 
 export default Contacts;

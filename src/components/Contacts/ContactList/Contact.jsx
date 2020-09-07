@@ -2,7 +2,7 @@ import React, { PureComponent } from 'react';
 import { NavLink } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
-import EditableValue from './EditableValue/EditableValue';
+import EditableValue from './EditableValue';
 
 import detail from './detail.svg';
 
@@ -36,11 +36,6 @@ const fields = [
   },
 ]
 
-const capitalize = s => {
-  if (typeof s !== 'string') return ''
-  return s.charAt(0).toUpperCase() + s.slice(1)
-}
-
 class Contact extends PureComponent {
   handleDelete = () => {
     const { id, delContact } = this.props;
@@ -49,9 +44,9 @@ class Contact extends PureComponent {
   }
 
   handleSaveEdit = (name, value) => {
-    const { id } = this.props;
+    const { id, saveEditFields } = this.props;
 
-    this.props[`saveEdit${capitalize(name)}`](id, value);
+    saveEditFields(id, name, value);
   }
 
   render() {
@@ -71,9 +66,6 @@ class Contact extends PureComponent {
               {...el}
               key={el.name}
               value={this.props[el.name]}
-              // name={el.name}
-              // type={el.type}
-              // maxLength={el.maxLength}
               saveEditFields={this.handleSaveEdit}
             />
           ))

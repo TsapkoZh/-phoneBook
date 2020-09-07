@@ -8,12 +8,8 @@ import PropTypes from 'prop-types';
 
 import { 
   addContact, 
-  delContact, 
-  saveEditName, 
-  saveEditPhone, 
-  saveEditAddress, 
-  saveEditCompany,
-  saveEditEmail,
+  delContact,
+  saveEditFields, 
 } from '../redux/contact/actions.js';
 
 import Contacts from './Contacts';
@@ -21,27 +17,19 @@ import Contacts from './Contacts';
 class PhoneBook extends PureComponent {
   render() {
     const { 
+      contacts,
       addContact, 
-      contacts, 
+      saveEditFields, 
       delContact, 
-      saveEditName, 
-      saveEditPhone,
-      saveEditAddress,
-      saveEditCompany,
-      saveEditEmail,
     } = this.props;
 
     return (
       <div>
         <Contacts
+          contacts={contacts}
           addContact={addContact}
           delContact={delContact}
-          contacts={contacts}
-          saveEditName={saveEditName}
-          saveEditPhone={saveEditPhone}
-          saveEditAddress={saveEditAddress}
-          saveEditCompany={saveEditCompany}
-          saveEditEmail={saveEditEmail}
+          saveEditFields={saveEditFields}
         />
       </div>
     )
@@ -59,19 +47,13 @@ const filterContacts = (arr, searchKey) => {
 
 const mapStateToProps = state => ({
   contacts: filterContacts(state.contacts, state.router.location.search),
-
-  // contacts: state.contacts
 });
 
 const mapDispatchToProps = dispatch =>
   bindActionCreators({
     addContact,
     delContact,
-    saveEditName,
-    saveEditPhone,
-    saveEditAddress,
-    saveEditCompany,
-    saveEditEmail,
+    saveEditFields,
   }, dispatch);
 
   PhoneBook.propTypes = {
@@ -83,6 +65,9 @@ const mapDispatchToProps = dispatch =>
       company: PropTypes.string,
       email: PropTypes.string,
     })),
+    addContact: PropTypes.func,
+    delContact: PropTypes.func,
+    saveEditFields: PropTypes.func,
   };
 
 export default connect(mapStateToProps, mapDispatchToProps)(PhoneBook);
