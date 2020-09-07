@@ -1,24 +1,24 @@
 {
   "files": {
-    "main.css": "/phoneBook/static/css/main.f43dc4d3.chunk.css",
-    "main.js": "/phoneBook/static/js/main.c0270e45.chunk.js",
-    "main.js.map": "/phoneBook/static/js/main.c0270e45.chunk.js.map",
+    "main.css": "/phoneBook/static/css/main.1f1d91cb.chunk.css",
+    "main.js": "/phoneBook/static/js/main.27b2e6c1.chunk.js",
+    "main.js.map": "/phoneBook/static/js/main.27b2e6c1.chunk.js.map",
     "runtime-main.js": "/phoneBook/static/js/runtime-main.a0275384.js",
     "runtime-main.js.map": "/phoneBook/static/js/runtime-main.a0275384.js.map",
-    "static/js/2.5027a698.chunk.js": "/phoneBook/static/js/2.5027a698.chunk.js",
-    "static/js/2.5027a698.chunk.js.map": "/phoneBook/static/js/2.5027a698.chunk.js.map",
+    "static/js/2.c25bcc85.chunk.js": "/phoneBook/static/js/2.c25bcc85.chunk.js",
+    "static/js/2.c25bcc85.chunk.js.map": "/phoneBook/static/js/2.c25bcc85.chunk.js.map",
     "index.html": "/phoneBook/index.html",
-    "precache-manifest.1bf5c117182b77caa185ec3ad56ed3ad.js": "/phoneBook/precache-manifest.1bf5c117182b77caa185ec3ad56ed3ad.js",
+    "precache-manifest.9939a52bd0d6b6d2cd3d1afa58c6e8aa.js": "/phoneBook/precache-manifest.9939a52bd0d6b6d2cd3d1afa58c6e8aa.js",
     "service-worker.js": "/phoneBook/service-worker.js",
-    "static/css/main.f43dc4d3.chunk.css.map": "/phoneBook/static/css/main.f43dc4d3.chunk.css.map",
-    "static/js/2.5027a698.chunk.js.LICENSE.txt": "/phoneBook/static/js/2.5027a698.chunk.js.LICENSE.txt",
+    "static/css/main.1f1d91cb.chunk.css.map": "/phoneBook/static/css/main.1f1d91cb.chunk.css.map",
+    "static/js/2.c25bcc85.chunk.js.LICENSE.txt": "/phoneBook/static/js/2.c25bcc85.chunk.js.LICENSE.txt",
     "static/media/detail.svg": "/phoneBook/static/media/detail.01eb1f84.svg",
     "static/media/search.svg": "/phoneBook/static/media/search.822bc171.svg"
   },
   "entrypoints": [
     "static/js/runtime-main.a0275384.js",
-    "static/js/2.5027a698.chunk.js",
-    "static/css/main.f43dc4d3.chunk.css",
-    "static/js/main.c0270e45.chunk.js"
+    "static/js/2.c25bcc85.chunk.js",
+    "static/css/main.1f1d91cb.chunk.css",
+    "static/js/main.27b2e6c1.chunk.js"
   ]
 }
