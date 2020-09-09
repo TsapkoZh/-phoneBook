@@ -1,5 +1,10 @@
 import React from 'react';
-import { Route, Switch } from 'react-router-dom';
+import { 
+  Route,
+  Switch,
+  useLocation 
+} from 'react-router-dom';
+
 import {
   CSSTransition,
   TransitionGroup,
@@ -8,14 +13,16 @@ import {
 import PhoneBook from './PhoneBook';
 import ContactProperties from './ContactProperties';
 
-import './app.scss'
+import './app.scss';
 
-function App() {
+const App = () => {
+  const firstLevelRoute = useLocation().pathname.split('/')[1] || '/';
+
   return (
     <Route render={({ location }) => (
       <TransitionGroup>
         <CSSTransition
-          key={location.key}
+          key={firstLevelRoute}
           timeout={450}
           classNames="fade"
         >
@@ -26,7 +33,7 @@ function App() {
         </CSSTransition>
       </TransitionGroup>
     )} />
-  );
+  )
 }
 
 export default App;

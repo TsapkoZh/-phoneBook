@@ -1,5 +1,9 @@
 import { routerMiddleware } from 'connected-react-router';
-import { applyMiddleware, compose, createStore } from 'redux';
+import { 
+  applyMiddleware, 
+  compose, 
+  createStore 
+} from 'redux';
 import { devToolsEnhancer } from 'redux-devtools-extension';
 import { createBrowserHistory } from 'history';
 
